@@ -1,0 +1,68 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:z3c="http://namespaces.zope.org/z3c"
+   i18n_domain="zojax.personal.friendconnect">
+   
+  <!-- preferences -->
+  <zojax:pagelet
+     type="preference.editGroup"
+     for="..interfaces.IPersonalFriendConnect"
+     template="preference.pt"
+     class=".preference.PersonalFriendConnect"
+     permission="zojax.ModifyPreference" />
+
+  <!-- content personal tags pageelement -->
+  <zojax:pageelement
+     title="Personal tags"
+     name="friendconnect.user"
+     for="zojax.content.friendconnect.interfaces.IContentTaggable"
+     template="tags.pt"
+     class=".tags.UserTags"
+     manager="zojax.content.browser.interfaces.IContentFooter"
+     weight="99" />
+
+  <!-- modify personal tags -->
+  <zojax:pagelet
+     name="changePersonalFriendConnect.html"
+     for="zojax.content.friendconnect.interfaces.IContentTaggable"
+     class=".modify.ModifyTagsForm"
+     permission="zope.View" />
+     
+  
+  <!-- tags workspace -->
+  <zojax:pagelet
+     name="tags"
+     for="zojax.personal.space.interfaces.IPersonalSpace"
+     template="preference.pt"
+     provides="..interfaces.IPersonalFriendConnectWorkspace"
+     class=".preference.PersonalFriendConnectWorkspace"
+     permission="zope.View" />
+  
+  
+  <!-- edit content wizard -->
+  <zojax:pagelet
+     name="content.personaltags"
+     type="form.subform"
+     for="zojax.content.friendconnect.interfaces.IContentTaggable
+    zojax.content.forms.interfaces.IContentStep"
+     class=".editwizard.TagsEditForm"
+     weight="100" />
+          
+  <!-- tags field  widget -->
+  <adapter factory=".widget.PersonalFriendConnectFieldWidget" />
+  <adapter factory=".widget.PersonalFriendConnectWidgetConverter" />
+  
+  <z3c:widgetTemplate
+     mode="input"
+     widget=".interfaces.IPersonalFriendConnectWidget"
+     layer="z3c.form.interfaces.IFormLayer"
+     template="widget_input.pt" />
+
+  <!-- styles -->
+  <zojax:resourceinclude
+     name="zojax-personal-friendconnect.css"
+     library="zojax"
+     type="stylesheet" file="styles.css" filetype="zrt" />
+
+</configure>

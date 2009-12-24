@@ -1,0 +1,6 @@
+<div class="z-personal-friendconnect">
+  My tags:
+  <tal:block tal:repeat="tag view/tags" tal:content="tag" />
+  <tal:block tal:condition="not:view/tags">no tags</tal:block>
+  <a href="changePersonalFriendConnect.html">Change</a>
+</div>

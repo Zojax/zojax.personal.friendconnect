@@ -1,0 +1,45 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.personal.friendconnect">
+
+  <!-- configlet -->
+  <zojax:configlet
+     name="principals.friendconnect"
+     title="User's personal tags"
+     description="This area allows you to configure user tags ."
+     class=".configlet.PersonalFriendConnectConfiglet"
+     schema=".interfaces.IPersonalFriendConnectConfiglet"
+     permission="zojax.Configure" />
+
+  <!-- preference group -->
+  <zojax:preferenceGroup
+     id="personalfriendconnect"
+     title="Personal friend connect"
+     description="These are all the preferences related to user personal tags."
+     schema=".interfaces.IPersonalFriendConnect"
+     class=".preference.PersonalFriendConnect"
+     tests="zojax.preferences.utils.isUser" />
+
+  <!-- friendconnect workspace -->
+  <adapter
+     name="friendconnect"
+     factory=".workspace.PersonalFriendConnectWorkspaceFactory" />
+     
+  <utility
+     name="tags"
+     factory=".workspace.PersonalFriendConnectWorkspaceDescription" />
+
+  <class class=".workspace.PersonalFriendConnectWorkspaceFactory">
+    <require
+       permission="zope.View"
+       interface=".interfaces.IPersonalFriendConnectWorkspace" />
+  </class>
+  
+  <!-- portlets -->
+  <include package=".portlets" />
+  
+  <!-- browser views -->
+  <include package=".browser" />
+
+</configure>
