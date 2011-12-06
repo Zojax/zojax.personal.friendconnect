@@ -1,4 +1,4 @@
-<h1>My personal tags</h1>
+<h1 i18n:translate="">My personal tags</h1>
 <br />
 
 <div class="z-tag-could" tal:condition="view/tags">
@@ -14,9 +14,9 @@
 
 <tal:block condition="view/showContent|nothing">
   <br /><br />
-  <h1>Contents for tag: <tal:block content="request/tag"/></h1>
+  <h1 i18n:translate="">Contents for tag: <tal:block i18n:name="tag" content="request/tag"/></h1>
 
-  <tal:block condition="not:view/contents">
+  <tal:block condition="not:view/contents" i18n:translate="">
     There are no contents for this tag.
   </tal:block>
   <ul class="z-listing" tal:condition="view/contents">

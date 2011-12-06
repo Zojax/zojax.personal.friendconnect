@@ -1,6 +1,10 @@
-<div class="z-personal-friendconnect">
+<div class="z-personal-friendconnect" i18n:translate="">
   My tags:
-  <tal:block tal:repeat="tag view/tags" tal:content="tag" />
-  <tal:block tal:condition="not:view/tags">no tags</tal:block>
-  <a href="changePersonalFriendConnect.html">Change</a>
+  <tal:block tal:repeat="tag view/tags" tal:content="tag" i18n:name="tags" />
+  <tal:block i18n:name="no_tags">
+    <tal:block tal:condition="not:view/tags" i18n:translate="">no tags</tal:block>
+  </tal:block>
+  <tal:block i18n:name="change">
+    <a href="changePersonalFriendConnect.html" i18n:translate="">Change</a>
+  </tal:block>
 </div>
