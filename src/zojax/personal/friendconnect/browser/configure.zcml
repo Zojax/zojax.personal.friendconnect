@@ -16,7 +16,7 @@
   <zojax:pageelement
      title="Personal tags"
      name="friendconnect.user"
-     for="zojax.content.friendconnect.interfaces.IContentTaggable"
+     for="zojax.content.tagging.interfaces.IContentTaggable"
      template="tags.pt"
      class=".tags.UserTags"
      manager="zojax.content.browser.interfaces.IContentFooter"
@@ -25,7 +25,7 @@
   <!-- modify personal tags -->
   <zojax:pagelet
      name="changePersonalFriendConnect.html"
-     for="zojax.content.friendconnect.interfaces.IContentTaggable"
+     for="zojax.content.tagging.interfaces.IContentTaggable"
      class=".modify.ModifyTagsForm"
      permission="zope.View" />
      
@@ -44,7 +44,7 @@
   <zojax:pagelet
      name="content.personaltags"
      type="form.subform"
-     for="zojax.content.friendconnect.interfaces.IContentTaggable
+     for="zojax.content.tagging.interfaces.IContentTaggable
     zojax.content.forms.interfaces.IContentStep"
      class=".editwizard.TagsEditForm"
      weight="100" />

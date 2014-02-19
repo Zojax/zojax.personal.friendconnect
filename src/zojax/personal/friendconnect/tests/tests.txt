@@ -2,3 +2,50 @@
 Browser tests
 =============
 
+    >>> from zope.interface import verify
+    >>> from zope.app.component.hooks import setSite
+    >>> from zope.app.security.interfaces import IAuthentication
+    >>> from zope.publisher.browser import TestRequest
+    >>> from zope.security.management import newInteraction, endInteraction
+    >>> from zojax.personal.friendconnect import workspace, interfaces
+
+    >>> root = getRootFolder()
+    >>> setSite(root)
+    >>> sm = root.getSiteManager()
+    >>> request = TestRequest()
+    >>> request.setPrincipal(sm.getUtility(IAuthentication).getPrincipal('zope.mgr'))
+    >>> newInteraction(request)
+
+
+Blogger workspace factory
+=========================
+
+    >>> factory = workspace.PersonalFriendConnectWorkspaceFactory(root)
+    >>> print factory.isInstalled()
+    False
+
+    >>> print factory.isAvailable()
+    True
+
+    >>> factory.isInstalled()
+    False
+
+    >>> manager = factory.install()
+
+    >>> interfaces.IPersonalFriendConnectWorkspace.providedBy(manager)
+    True
+
+
+    >>> factory.isInstalled()
+    False
+
+
+Verify contract implementation
+------------------------------
+
+    >>> verify.verifyClass(interfaces.IPersonalFriendConnectWorkspace, workspace.PersonalFriendConnectWorkspace)
+    True
+
+
+    >>> endInteraction()
+    >>> setSite(None)

@@ -5,10 +5,9 @@
    i18n_domain="zojax.personal.friendconnect">
 
   <include package="zojax.autoinclude" file="meta.zcml" />
+  <includeAllDependencies package="zojax.product" extras="test" />
   <includeAllDependencies package="zojax.personal.friendconnect" extras="test" />
 
-  <includeOverrides
-     package="zojax.personal.space.tests" file="overrides.zcml" />
 
   <includeOverrides
      package="zojax.personal.friendconnect.tests" file="overrides.zcml" />

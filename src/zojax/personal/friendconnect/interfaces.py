@@ -18,10 +18,8 @@ $Id$
 from zope import interface, schema
 from zope.i18nmessageid import MessageFactory
 
-from zojax.content.friendconnect.interfaces import IContentTaggable, IContentTags
 from zojax.content.space.interfaces import IWorkspace, IWorkspaceFactory
 
-from field import PersonalFriendConnectField
 
 _ = MessageFactory('zojax.personal.friendconnect')
 

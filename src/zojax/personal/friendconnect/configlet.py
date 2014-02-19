@@ -22,12 +22,10 @@ from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 
 from zojax.authentication.utils import getPrincipal
 from zojax.controlpanel.configlet import Configlet
-from zojax.friendconnect.engine import TaggingEngine
-from zojax.content.friendconnect.interfaces import IContentTaggable, IContentTags
+from zojax.tagging.engine import TaggingEngine
+from zojax.content.tagging.interfaces import IContentTaggable, IContentTags
 
-from interfaces import IPersonalFriendConnectConfiglet, IContentPersonalFriendConnect, \
-                       IPersonalTaggable
-
+from interfaces import IPersonalFriendConnectConfiglet, IPersonalFriendConnect
 
 class PersonalFriendConnectConfiglet(Configlet):
 
@@ -145,4 +143,4 @@ def taggableModified(ob, event):
     if not component.getUtility(IPersonalFriendConnectConfiglet).useGlobalTags:
         return
     tags = IContentTags(ob).tags
-    component.getMultiAdapter((ob, getPrincipal()), IContentPersonalFriendConnect).tags = tags
+    component.getMultiAdapter((ob, getPrincipal()), IPersonalFriendConnect).tags = tags

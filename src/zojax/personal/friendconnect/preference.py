@@ -15,14 +15,8 @@
 
 $Id$
 """
-from rwproperty import getproperty, setproperty
-
 from zope import interface
-from zope.security.interfaces import IPrincipal
-from zope.security.proxy import removeSecurityProxy
-from zope.component import getUtility, adapts
-
-from interfaces import IPersonalFriendConnect, IPersonalFriendConnectConfiglet
+from interfaces import IPersonalFriendConnect
 
 
 class BasePersonalFriendConnect(object):

@@ -15,17 +15,14 @@
 
 $Id$
 """
-from zope import interface, schema, component
+from zope import interface, component
 from zope.component import getUtility
-from zope.security.proxy import removeSecurityProxy
-from zope.app.component.hooks import getSite
 
 from z3c.form import converter
 from z3c.form.browser import text
 from z3c.form.widget import FieldWidget
 from z3c.form.interfaces import IFormLayer, IFieldWidget
 
-from zojax.personal.friendconnect.field import IPersonalFriendConnectField
 from zojax.personal.friendconnect.interfaces import IPersonalFriendConnect
 from interfaces import IPersonalFriendConnectWidget
 
@@ -50,7 +47,7 @@ class PersonalFriendConnectWidget(text.TextWidget):
 
 
 class PersonalFriendConnectWidgetConverter(converter.BaseDataConverter):
-    component.adapts(IPersonalFriendConnectField, PersonalFriendConnectWidget)
+    component.adapts(PersonalFriendConnectWidget)
 
     def toWidgetValue(self, value):
         """See interfaces.IDataConverter"""
@@ -68,6 +65,6 @@ class PersonalFriendConnectWidgetConverter(converter.BaseDataConverter):
 
 
 @interface.implementer(IFieldWidget)
-@component.adapter(IPersonalFriendConnectField, IFormLayer)
+@component.adapter(IFormLayer)
 def PersonalFriendConnectFieldWidget(field, request):
     return FieldWidget(field, PersonalFriendConnectWidget(request))

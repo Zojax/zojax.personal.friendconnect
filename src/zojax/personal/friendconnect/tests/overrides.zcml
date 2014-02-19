@@ -13,4 +13,10 @@
      class="zojax.personal.space.portletmanager.PortletManager"
      portlettype="zojax.personal.space.interfaces.IPersonalWorkspacePortlet" />
 
+    <browser:page
+       name="login_logout"
+       for="*"
+       class="zope.app.security.browser.auth.LoginLogout"
+       permission="zope.Public" />
+
 </configure>

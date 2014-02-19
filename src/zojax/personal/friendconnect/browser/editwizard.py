@@ -19,17 +19,17 @@ from zope import component
 
 from zojax.layoutform import Fields, PageletEditSubForm
 
-from zojax.personal.friendconnect.interfaces import IContentPersonalFriendConnect, IPersonalFriendConnectConfiglet
+from zojax.personal.friendconnect.interfaces import IPersonalFriendConnect, IPersonalFriendConnectConfiglet
 
 
 class TagsEditForm(PageletEditSubForm):
 
     prefix = 'personal.tags'
 
-    fields = Fields(IContentPersonalFriendConnect)
+    fields = Fields(IPersonalFriendConnect)
 
     def getContent(self):
-        return component.getMultiAdapter((self.context, self.request.principal), IContentPersonalFriendConnect)
+        return component.getMultiAdapter((self.context, self.request.principal), IPersonalFriendConnect)
 
     def isAvailable(self):
         return not component.getUtility(IPersonalFriendConnectConfiglet).useGlobalTags

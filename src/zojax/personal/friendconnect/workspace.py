@@ -63,8 +63,8 @@ class PersonalFriendConnectWorkspaceFactory(object):
 
     install = get
 
-    def uninstall(self):
-        pass
+    #def uninstall(self):
+    #    pass
 
     def isInstalled(self):
         return False

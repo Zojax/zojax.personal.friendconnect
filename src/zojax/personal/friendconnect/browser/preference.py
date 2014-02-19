@@ -20,7 +20,7 @@ from zope.proxy import removeAllProxies
 from zope.app.intid.interfaces import IIntIds
 
 from zojax.catalog.interfaces import ICatalog
-from zojax.friendconnect.index import TagIndex
+from zojax.tagging.index import TagIndex
 
 from zojax.personal.friendconnect.interfaces import IPersonalFriendConnect
 
