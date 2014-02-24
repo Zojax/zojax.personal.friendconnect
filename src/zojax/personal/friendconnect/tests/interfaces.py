@@ -15,17 +15,15 @@
 
 $Id$
 """
-from zope import interface, schema
-from zojax.content.actions.interfaces import IAction
+from zope import schema
 from zojax.portlet.interfaces import IPortletManagerConfiguration
 
-from zojax.personal.favorites.interfaces import _
 
 
 class IPersonalFriendConnectLeftPortletManager(IPortletManagerConfiguration):
 
     portletIds = schema.Tuple(
-        title = _('Portlets'),
+        title = u'Portlets',
         value_type = schema.Choice(vocabulary = 'zojax portlets'),
         default = ('personal.friendconnect.personaltags',),
         required = True)
